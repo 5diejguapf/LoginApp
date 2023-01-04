@@ -43,7 +43,6 @@ class LoginViewController: UIViewController {
         return true
     }
     
-    // Метод для скрытия клавиатуры тапом по экрану
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         super .touchesBegan(touches, with: event)
