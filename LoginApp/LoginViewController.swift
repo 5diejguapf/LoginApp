@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     private let username = "USR1"
     private let password = "1234"
@@ -49,13 +49,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotLoginAlert() {
-        var alert = UIAlertController(title: "Oops!", message: "Your login is \(username)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Oops!", message: "Your login is \(username)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
 
     @IBAction func forgotPasswordAlert() {
-        var alert = UIAlertController(title: "Oops!", message: "Your password is \(password)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Oops!", message: "Your password is \(password)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
     }
     
     private func wrongAuthAlert() {
-        var alert = UIAlertController(
+        let alert = UIAlertController(
             title: "Invalid login or password!", message: "Please input correct login and password", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
