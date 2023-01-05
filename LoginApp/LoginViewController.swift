@@ -9,15 +9,20 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    private let username = "USR1"
-    private let password = "1234"
-
     @IBOutlet weak var loginTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
+    private let username = "USR1"
+    private let password = "1234"
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.username = loginTF.text
+        welcomeVC.username = loginTF.text!
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
     }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
@@ -25,51 +30,41 @@ final class LoginViewController: UIViewController {
         passwordTF.text = ""
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        guard let username = loginTF.text, !username.isEmpty else {
-            print("type login")
-            return false
+    @IBAction func loginAction() {
+        if !tryLogIn(login: loginTF.text, password: passwordTF.text) {
+            showAlert(
+                title: "Invalid login or password!",
+                message: "Please input correct login and password",
+                clearTextField: passwordTF
+            )
+            return
         }
-        guard let password = passwordTF.text, !password.isEmpty else {
-            print("type password")
-            return false
-        }
-        if !trySingIn(username, password) {
-            print("singin is false")
-            wrongAuthAlert()
-            passwordTF.text = ""
-            return false
-        }
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-        super .touchesBegan(touches, with: event)
+        performSegue(withIdentifier: "showWelcomeScreen", sender: nil)
     }
     
     @IBAction func forgotLoginAlert() {
-        let alert = UIAlertController(title: "Oops!", message: "Your login is \(username)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
+        showAlert(title: "Oops!", message: "Your login is \(username)")
     }
 
     @IBAction func forgotPasswordAlert() {
-        let alert = UIAlertController(title: "Oops!", message: "Your password is \(password)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
+        showAlert(title: "Oops!", message: "Your password is \(password)", clearTextField: passwordTF)
     }
     
-    private func trySingIn(_ username: String, _ password: String) -> Bool {
-        self.username.elementsEqual(username) && self.password.elementsEqual(password)
-    }
-    
-    private func wrongAuthAlert() {
+    private func showAlert(title: String, message: String, clearTextField: UITextField? = nil) {
         let alert = UIAlertController(
-            title: "Invalid login or password!", message: "Please input correct login and password", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            clearTextField?.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
+    private func tryLogIn(login username: String?, password: String?) -> Bool {
+        self.username.elementsEqual(username ?? "") && self.password.elementsEqual(password ?? "")
+    }
 }
 

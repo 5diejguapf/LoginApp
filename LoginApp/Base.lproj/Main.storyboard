@@ -33,6 +33,9 @@
                                         <rect key="frame" x="111" y="108" width="66" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                        <connections>
+                                            <action selector="loginAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="cqm-2Y-v7u"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZL8-2A-8a9">
                                         <rect key="frame" x="14" y="162.5" width="260" height="28.5"/>
@@ -78,7 +81,7 @@
                     <connections>
                         <outlet property="loginTF" destination="S8R-x3-gLG" id="a6S-UK-1Vc"/>
                         <outlet property="passwordTF" destination="jYq-pw-nRT" id="5TZ-U5-apw"/>
-                        <segue destination="23g-PK-nFe" kind="presentation" modalPresentationStyle="fullScreen" id="hCX-gI-8DQ"/>
+                        <segue destination="23g-PK-nFe" kind="presentation" identifier="showWelcomeScreen" modalPresentationStyle="fullScreen" id="hCX-gI-8DQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
