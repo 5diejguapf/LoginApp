@@ -16,8 +16,11 @@ final class LoginViewController: UIViewController {
     private let password = "1234"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.username = loginTF.text!
+        guard let tabBarController = segue.destination as? UITabBarController else { return }
+        for item in tabBarController.children {
+            guard let welcomeVC = item as? WelcomeViewController else { continue }
+            welcomeVC.username = loginTF.text!
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
