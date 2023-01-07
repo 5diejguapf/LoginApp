@@ -14,6 +14,9 @@
 		D55CCD252964C7720075CBAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D55CCD242964C7720075CBAB /* Assets.xcassets */; };
 		D55CCD282964C7720075CBAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D55CCD262964C7720075CBAB /* LaunchScreen.storyboard */; };
 		D55CCD302964D3CC0075CBAB /* WelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CCD2F2964D3CC0075CBAB /* WelcomViewController.swift */; };
+		D55CCD3A29699B370075CBAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CCD3929699B370075CBAB /* User.swift */; };
+		D55CCD3C2969EFF40075CBAB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CCD3B2969EFF40075CBAB /* InfoViewController.swift */; };
+		D55CCD3E2969FF510075CBAB /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CCD3D2969FF510075CBAB /* ReposViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		D55CCD272964C7720075CBAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D55CCD292964C7720075CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D55CCD2F2964D3CC0075CBAB /* WelcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomViewController.swift; sourceTree = "<group>"; };
+		D55CCD3929699B370075CBAB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		D55CCD3B2969EFF40075CBAB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		D55CCD3D2969FF510075CBAB /* ReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 				D55CCD382969933F0075CBAB /* StoryBoards */,
 				D55CCD242964C7720075CBAB /* Assets.xcassets */,
 				D55CCD292964C7720075CBAB /* Info.plist */,
+				D55CCD3929699B370075CBAB /* User.swift */,
 			);
 			path = LoginApp;
 			sourceTree = "<group>";
@@ -80,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				D55CCD1F2964C7710075CBAB /* LoginViewController.swift */,
+				D55CCD3B2969EFF40075CBAB /* InfoViewController.swift */,
+				D55CCD3D2969FF510075CBAB /* ReposViewController.swift */,
 				D55CCD2F2964D3CC0075CBAB /* WelcomViewController.swift */,
 			);
 			path = ViewControllers;
@@ -168,6 +177,9 @@
 				D55CCD202964C7710075CBAB /* LoginViewController.swift in Sources */,
 				D55CCD1C2964C7710075CBAB /* AppDelegate.swift in Sources */,
 				D55CCD1E2964C7710075CBAB /* SceneDelegate.swift in Sources */,
+				D55CCD3E2969FF510075CBAB /* ReposViewController.swift in Sources */,
+				D55CCD3A29699B370075CBAB /* User.swift in Sources */,
+				D55CCD3C2969EFF40075CBAB /* InfoViewController.swift in Sources */,
 				D55CCD302964D3CC0075CBAB /* WelcomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

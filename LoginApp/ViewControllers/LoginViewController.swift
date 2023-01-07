@@ -12,14 +12,20 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var loginTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
-    private let username = "USR1"
-    private let password = "1234"
+    private let user = User.getUser()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let tabBarController = segue.destination as? UITabBarController else { return }
-        for item in tabBarController.children {
-            guard let welcomeVC = item as? WelcomeViewController else { continue }
-            welcomeVC.username = loginTF.text!
+        guard let tabBarRootChilds = tabBarController.viewControllers else { return }
+        
+        for view in tabBarRootChilds {
+            if let welcomeVC = view as? WelcomeViewController {
+                welcomeVC.username = user.userLogin
+            } else if let infoView = view as? InfoViewController {
+                infoView.userInfo = user.userInfo
+            } else if let repoView = view as? ReposViewController {
+                repoView.repos = user.userRepos
+            }
         }
     }
     
@@ -46,11 +52,11 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotLoginAlert() {
-        showAlert(title: "Oops!", message: "Your login is \(username)")
+        showAlert(title: "Oops!", message: "Your login is \(user.userLogin)")
     }
 
     @IBAction func forgotPasswordAlert() {
-        showAlert(title: "Oops!", message: "Your password is \(password)", clearTextField: passwordTF)
+        showAlert(title: "Oops!", message: "Your password is \(user.userPassword)", clearTextField: passwordTF)
     }
     
     private func showAlert(title: String, message: String, clearTextField: UITextField? = nil) {
@@ -67,7 +73,7 @@ final class LoginViewController: UIViewController {
     }
     
     private func tryLogIn(login username: String?, password: String?) -> Bool {
-        self.username.elementsEqual(username ?? "") && self.password.elementsEqual(password ?? "")
+        user.userLogin.elementsEqual(username ?? "") && user.userPassword.elementsEqual(password ?? "")
     }
 }
 
